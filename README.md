@@ -1,58 +1,58 @@
-#FFIClosure
+# FFIClosure
 
-###Description
+### Description
 **FFIClosure** is a Objective-C wrapper for libffi for [ObjFW](https://github.com/Midar/objfw)
 **FFIClosure** use libffi trampolines implementation to extend ObjFW functionality and flexibility and add to ObjFW some Apple Objective-C/Objective-C 2.0 features.
 
-###Features
+### Features
 **FFIClosure** supports automatic mapping of block / method types to libffi types, based on the signatures that Clang creates at compile time, even for С-struct types.
 
-###Limitations
+### Limitations
 **FFIClosure** does not support unions as closure arguments or return-type
 
-###Requirements
+### Requirements
 - ObjFW v0.9-dev or higher
 - libffi v3.2.1 or higher
 - Optional: Clang 3.8 or higher (for Blocks-Runtime)
 
-###FFIClosure wrapper class features
-####Create ffi_closure from Block-closure with any Block-signature to create function pointer with signature < Block-return-type >(*)(Block-arguments-types list)
+### FFIClosure wrapper class features
+#### Create ffi_closure from Block-closure with any Block-signature to create function pointer with signature < Block-return-type >(*)(Block-arguments-types list)
 ```objc
 + (instancetype)closureWithBlock:(id)block;
 
 - (instancetype)initWithBlock:(id)block;
 ```
-####Create ffi_closure from Block with signature < Any >(^)(__unsafe_unretained id, ...) to create IMP function pointer with signature < Any >(*)(id, SEL, ...)
+#### Create ffi_closure from Block with signature < Any >(^)(__unsafe_unretained id, ...) to create IMP function pointer with signature < Any >(*)(id, SEL, ...)
 ```objc
 + (instancetype)closureAsImpImplementationWithBlock:(id)block;
 
 - (instancetype)initAsImpImplementationWithBlock:(id)block;
 ```
-####Create ffi_closure from ObjC Object method to create function pointer with sinature < Method-return-type >(*)(Method-arguments-types list) with excluded id and SEL arguments
+#### Create ffi_closure from ObjC Object method to create function pointer with sinature < Method-return-type >(*)(Method-arguments-types list) with excluded id and SEL arguments
 ```objc
 + (instancetype)closureWithTarget:(id)target selector:(SEL)selector;
 
 - (instancetype)initWithTarget:(id)target selector:(SEL)selector;
 ```
-####Get void* pointer castable to pointer to function
+#### Get void* pointer castable to pointer to function
 ```objc
 - (void *)function;
 ```
 
-###Apple Objective-C/Objective-C 2.0 features
-####Create method implementation from block in Apple ObjC style
+### Apple Objective-C/Objective-C 2.0 features
+#### Create method implementation from block in Apple ObjC style
 ```objc
 IMP imp_implementationWithBlock(id block);
 ```
-####Get Block from IMP
+#### Get Block from IMP
 ```objc
 id imp_getBlock(IMP imp);
 ```
-####Remove Block associated with IMP
+#### Remove Block associated with IMP
 ```objc
 BOOL imp_removeBlock(IMP imp);
 ```
-####Association ObjC-Object with another ObjC-Object (Dynamic properties and ivars for example)
+#### Association ObjC-Object with another ObjC-Object (Dynamic properties and ivars for example)
 ```objc
 id objc_getAssociatedObject(id object, void * key);
 
@@ -61,8 +61,8 @@ void objc_setAssociatedObject(id object, void * key, id value, objc_AssociationP
 void objc_removeAssociatedObjects(id object);
 ```
 
-###Utils
-####Some useful functions for working with Blocks/Methods signatures
+### Utils
+#### Some useful functions for working with Blocks/Methods signatures
 ```objc
 const char * of_block_signature(id block);
 
@@ -72,7 +72,7 @@ const char * of_block_to_cfunction_signature(const char * signature);
 
 const char * of_imp_to_cfunction_signature(const char * signature);
 ```
-###Usage example
+### Usage example
 ```objc
 int (*callback_function)(int, float, const char *);
 
