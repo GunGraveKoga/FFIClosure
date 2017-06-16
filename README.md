@@ -2,6 +2,7 @@
 
 ### Description
 **FFIClosure** is a Objective-C wrapper for libffi for [ObjFW](https://github.com/Midar/objfw)
+
 **FFIClosure** use libffi trampolines implementation to extend ObjFW functionality and flexibility and add to ObjFW some Apple Objective-C/Objective-C 2.0 features.
 
 ### Features
