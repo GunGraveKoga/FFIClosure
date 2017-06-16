@@ -3,7 +3,7 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-TARGET = BlocksTrampoline
+TARGET = FFIClosure
 
 INCLUDEPATH += "$$(MSYSTEM_PREFIX)/include"
 INCLUDEPATH += "$$(MSYSTEM_PREFIX)/$$(MSYSTEM_CHOST)/include"
